@@ -1,0 +1,18 @@
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+  <%= link_to "Destroy Comment", [comment.article, comment],
+              method: :delete,
+              data: {confirm: "Are you sure?"} %>
+</p>
+
+<%# Parital created to clean up show.html.erb, and partial imported instead and rendered on line 12 %>
+<%# clicking destroy comment link will now send delete request to route /articles/:article_id/comments/:id to CommentsController %>

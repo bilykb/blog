@@ -1,0 +1,62 @@
+<%= form_for @article do |f| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %>
+prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', articles_path %>
+
+
+<%# The code from two views was consolidated into one partical called _form.html.erb because they were the same.  This was done to keep our code dry. %>
+<%# Attached are the notes from new.html.erb and edit.html.erb %>
+
+<%# ------------------------------------------------------- %>
+<%# Notes taken from new.html.erb %>
+<%# ------------------------------------------------------- %>
+
+<%# form_for is a form builder method.  It needs to be passed an identifying object.  In this case it is :article and lets form_for know the purpose of the form.  url: article_path ensures that the submit button carries out a post request to /articles, rather than a get request to articles/new which is default.  For this to be successful you need to add a "create" method to the ArticlesController %>
+<%# f. represents the FormBuilder object, and is being used here to build two labels and two text fields, and a submit %>
+<%# line 3, :article becomes the object in which all paramaters are attached to and used in articles_controller.rb for one post %>
+<%# the word "articles" in "articles_path" on line 3 can be found when typing bin/rake in the command line.  _path is added %>
+
+
+<%# link_to the articles index route path "index.html.erb" %>
+<%# because articles_path is pointing to a view controlled by the same controller as new.html.erb we do not need to specify the controller as we did in "welcome/index.html.erb" line 2". Rails uses the smae controller by default%>
+<%# if there is a ? like there is on .any?, it is convention that indicates its looking for a boolean (true false) %>
+<%# on line 8, we check for errors in @article with .any?.  If there is we show the list of errors with @article.errrors.full_messages.  It is not included in the instructions, but the full_messages method actually iterates through the messages intrinsically, and a loop to display them is not necessary in current versions of Rails. In this version it is necessary" %>
+<%# on line 8 pluralize is a method that takes a number and a string as params.  if the number > 1, it pluralizes the string%>
+
+<%# ------------------------------------------------------- %>
+<%# Notes taken from edit.html.erb %>
+<%# ------------------------------------------------------- %>
+
+<%# line 3, @article is defined in articles_controller in the edit action %>
+<%# line 3, :patch indicates to Rails that this form needs to be submitted via the PATCH HTTP method, which we're expected to use in accordance with REST for update. This form now points to the update action in articles_controller %>
+<%# line 3, form_for can take an object as the first parameter. Passing the symbol :article, which has the same name as @article creates the same behavior https://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-form_for %>

@@ -1,0 +1,26 @@
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<%= link_to "Edit", edit_article_path(@article) %>
+<%= link_to "Back", articles_path %>
+
+<%# @article in this view was defined in articles_controller.rb line 12. A single article is stored in this variable to show in this view, and imported by Rails %>
+<%# line 15, link to the index view index.html.erb %>
+<%# because articles_path is pointing to a view controlled by the same controller as new.html.erb we do not need to specify the controller as we did in "welcome/index.html.erb" line 2". Rails uses the smae controller by default %>
+<%# line 11 to 23, a form that calls on the CommentsController create action.  form_for utilizes an array here, which builds a nested route "/articles/1/comments" %>
+<%# line 12, loop needed because comments are nested into articles %>
+<%# line 15, rails is smart enough to know you're referencing the partial _form.html.erb %>
+<%# line 12, @article is available to this partial because we defined @article as an instance variable %>
