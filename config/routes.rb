@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with "bin/rake routes".
+
 
   # You can have the root of your site routed with "root"
   root 'welcome#index' # connects the root of your site to a specific controller and action. It tells rails to map request to the root of the application to the welcome controller's index action and 'get welcome/index' tells rails to map requests to http://localhost:3000/welcome/index
+  # to rephrase, if there is a get request for welcome, this says to map it to the root action in the WelcomeController
 
   #-------- ^^^my notes^^^ ------
   

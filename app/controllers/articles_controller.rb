@@ -9,6 +9,8 @@ except: [:index, :show] # this line ensures that a user will be authenticated on
     @articles = Article.all
     # @article is passed by Rails to "views/articles/index.html.erb"
     # variable contains all submitted articles
+    # implicitely renders @articles
+    # all instance variables are automatically available to the ERB templates
   end
 
   def show # this action will point to the following route: "article GET /articles/:id(.:format) articles#show"

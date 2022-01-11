@@ -23,7 +23,7 @@
 
 <%# line 3, this link contains the path to the new article form" &>
 <%# new_article_path is automatically created as a helper function for the new route. When you create a route for an entity, if i was to create a new user, it would be "new_user_path". A list of these can be found in terminal when you type "bin/rake" %>
-<%# passed to index.html.erb view by articles_controller.rb.  Variable was assigned in line 6 %>
+<%# passed to index.html.erb view by articles_controller.rb.  Variable was assigned in line 7 %>
 <%# Line 17, we are using link_to in a different way.  We pass action in the controller as the first arguement.  The named route as the second arguement, and then options as other arguments %>
 <%# line 18, method: :delete are used as HTML 5 attributes so that when the link is clicked, Rails will show a confirm dialog using the contents of line 19.  If confirmed, delete %>
 <%# The dialog prompt is made possible using the javascript in file "jquery_ujs", which I can't even find.  Apparently its imported into file views/layouts/application.html.erb so it can be used, but I can't find it %>
